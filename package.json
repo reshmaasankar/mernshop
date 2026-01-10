@@ -1,0 +1,32 @@
+{
+  "name": "mernshop",
+  "version": "1.0.0",
+  "description": "mern application",
+  "homepage": "https://github.com/reshmaasankar/mernshop#readme",
+  "bugs": {
+    "url": "https://github.com/reshmaasankar/mernshop/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reshmaasankar/mernshop.git"
+  },
+  "license": "ISC",
+  "author": "Reshma",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "mongoose": "^9.1.2"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "nodemon": "^3.1.11"
+  }
+}
