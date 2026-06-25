@@ -3,20 +3,17 @@ import { Col, Row } from 'react-bootstrap'
 import Product from '../components/Product'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import axios from 'axios';
+import { useGetProductsQuery } from '../reducers/productsApiSlice'
 
 const Home = () => {
-    const [products, setProducts] = useState([]);
 
-    useEffect(() =>{
-        const fetchProducts = async () =>{
-            const {data} = await axios.get('/api/products');
-            setProducts(data)
-        };
-        fetchProducts();
-    },[])
+  const {data:products, isLoading, isError} = useGetProductsQuery();
   return (
     <>
+    {isLoading ? (
+        <h2>Loading...</h2>
+    ) : isError ? (<div>Errorrrr!!!</div>) : (
+        <>
         <h3>Latest Products</h3>
         <Row>
             {products.map(product => (
@@ -25,6 +22,9 @@ const Home = () => {
                 </Col>
             ))}
         </Row>
+        </>
+    )
+    }
     </>
   )
 }
